@@ -4,8 +4,24 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#070a13] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
       
-      {/* 1. HERO SECTION */}
-      <section className="min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 max-w-6xl mx-auto">
+      {/* HEADER NAV */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#070a13]/80 border-b border-slate-800/60">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <a href="#" className="text-xl font-extrabold tracking-wider text-white">
+            RB<span className="text-cyan-400">.</span>
+          </a>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+            <a href="#" className="hover:text-cyan-400 transition-colors">Home</a>
+            <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
+            <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
+            <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
+            <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* HERO SECTION */}
+      <section className="min-h-[80vh] flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 max-w-6xl mx-auto">
         <div className="flex-1 space-y-6 text-left">
           <h3 className="text-cyan-400 text-lg font-mono tracking-wide">Hello, It&apos;s Me</h3>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
@@ -36,7 +52,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Circular Profile Image Container */}
+        {/* Profile Image Column */}
         <div className="relative flex justify-center items-center">
           <div className="absolute w-64 h-64 md:w-80 md:h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
           <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.4)] overflow-hidden flex items-center justify-center">
@@ -44,16 +60,12 @@ export default function Home() {
               src="/profile.jpg"
               alt={site.name}
               className="rounded-full object-cover w-full h-full"
-              onError={(e) => {
-                // Auto-fallback if the file extension is .png or capitalized
-                e.currentTarget.src = '/profile.png';
-              }}
             />
           </div>
         </div>
       </section>
 
-      {/* 2. ABOUT SECTION */}
+      {/* ABOUT SECTION */}
       <section id="about" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
@@ -68,7 +80,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. PROJECT GALLERY */}
+      {/* PROJECT GALLERY */}
       <section id="projects" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
@@ -127,7 +139,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. SKILLS SECTION */}
+      {/* SKILLS SECTION */}
       <section id="skills" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
@@ -160,7 +172,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. CONTACT SECTION */}
+      {/* CONTACT SECTION */}
       <section id="contact" className="py-16 px-6 max-w-4xl mx-auto border-t border-slate-800/80 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight mb-2">
           Get In <span className="text-cyan-400">Touch</span>
