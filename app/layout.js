@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   title: 'Rajesh Botla — Software Engineer',
   description:
-    'Portfolio of Rajesh Botla, a software engineer focused on backend systems, distributed architecture, and applied AI.',
+    'Portfolio of Rajesh Botla, a Software Engineer specializing in Full-Stack Web Applications, Distributed Systems, Microservices, and Multimodal GenAI/RAG platforms.',
 };
 
 export default function RootLayout({ children }) {
