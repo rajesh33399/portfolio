@@ -37,19 +37,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Profile Image Column */}
-        <div className="relative flex justify-center items-center">
-          <div className="absolute w-64 h-64 md:w-80 md:h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
-          <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.3)]">
-            <Image
-              src="/profile.jpg"
-              alt={site.name}
-              width={300}
-              height={300}
-              priority
-              className="rounded-full object-cover w-full h-full"
-            />
-          </div>
+        {/* Circular Profile Image Container */}
+<div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.4)] overflow-hidden flex items-center justify-center">
+  <img
+    src="/profile.jpg"
+    alt={site.name}
+    className="rounded-full object-cover w-full h-full"
+    onError={(e) => {
+      // Fallback if the file extension on GitHub is .png or capitalized
+      e.currentTarget.src = '/profile.png';
+    }}
+  />
+</div>
         </div>
       </section>
 
