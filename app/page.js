@@ -1,9 +1,62 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { site } from '@/config/site';
 
+// Self-contained Typewriter Hook (Types, Pauses, Backspaces)
+function TypewriterEffect({ words, typingSpeed = 100, deletingSpeed = 50, pauseDuration = 1500 }) {
+  const [text, setText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[wordIndex % words.length];
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        setText(currentWord.substring(0, text.length + 1));
+        if (text === currentWord) {
+          setTimeout(() => setIsDeleting(true), pauseDuration);
+        }
+      } else {
+        setText(currentWord.substring(0, text.length - 1));
+        if (text === '') {
+          setIsDeleting(false);
+          setWordIndex((prev) => prev + 1);
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, wordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
+
+  return (
+    <span className="text-cyan-400 font-bold border-r-2 border-cyan-400 pr-1 animate-pulse">
+      {text}
+    </span>
+  );
+}
+
 export default function Home() {
+  const skillsList = [
+    { name: 'HTML', color: '#E34F26' },
+    { name: 'CSS', color: '#1572B6' },
+    { name: 'JavaScript', color: '#F7DF1E' },
+    { name: 'C', color: '#A8B9CC' },
+    { name: 'Kotlin', color: '#7F52FF' },
+    { name: 'Power BI', color: '#F2C811' },
+    { name: 'PostgreSQL', color: '#4169E1' },
+    { name: 'MongoDB', color: '#47A248' },
+    { name: 'Python', color: '#3776AB' },
+    { name: 'Git', color: '#F05032' },
+    { name: 'Blockchain', color: '#121D33' },
+    { name: 'TensorFlow', color: '#FF6F00' },
+    { name: 'PyTorch', color: '#EE4C2C' },
+    { name: 'Keras', color: '#D00000' },
+    { name: 'Scikit-learn', color: '#F7931E' },
+    { name: 'OpenCV', color: '#5C3EE8' },
+  ];
+
   return (
     <main className="min-h-screen bg-[#070a13] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
       
@@ -23,23 +76,26 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO SECTION WITH TYPEWRITER */}
+      {/* HERO SECTION */}
       <section className="min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 max-w-6xl mx-auto">
         <div className="flex-1 space-y-6 text-left">
           <h3 className="text-cyan-400 text-sm md:text-base font-mono tracking-widest uppercase">
             Hello, It&apos;s Me
           </h3>
           
-          <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight leading-none mb-4">
             Rajesh Botla
           </h1>
 
-          {/* DYNAMIC TYPEWRITER TEXT FROM CSS */}
-          <div className="text-xl md:text-2xl font-semibold text-slate-200">
-            <span>And I&apos;m a </span>
-            <span className="typewriter-text text-cyan-400 font-bold">
-              Software Engineer & GenAI Developer
-            </span>
+          {/* DYNAMIC BACKSPACING TYPEWRITER ROLE */}
+          <div className="text-xl md:text-3xl font-semibold text-slate-200 h-10 flex items-center gap-2">
+            <span>And I&apos;m a</span>
+            <TypewriterEffect 
+              words={[
+                'Full Stack Software Engineer',
+                'GenAI Developer'
+              ]} 
+            />
           </div>
 
           <p className="text-slate-400 text-base leading-relaxed max-w-xl">
@@ -64,7 +120,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* PROFILE IMAGE WITH GLOW */}
+        {/* PROFILE IMAGE */}
         <div className="relative flex justify-center items-center">
           <div className="absolute w-64 h-64 md:w-80 md:h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
           <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.4)] overflow-hidden flex items-center justify-center">
@@ -77,7 +133,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT SECTION (Clean focus without college/location) */}
+      {/* ABOUT SECTION */}
       <section id="about" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
@@ -88,7 +144,7 @@ export default function Home() {
         <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-10 text-center space-y-6 text-slate-300 leading-relaxed max-w-3xl mx-auto shadow-lg">
           <h3 className="text-2xl font-bold text-white">Passionate Software Engineer</h3>
           <p className="text-slate-400 text-base leading-relaxed">
-            I am a dedicated software engineer focused on building robust backend microservices, high-performance web applications, and intelligent GenAI integrations. I strive to build clean, intuitive user experiences backed by scalable systems architecture.
+            I am a quick-minded computer science enthusiast. I am deeply interested in web development and full-stack software architecture, building beautiful, responsive user interfaces backed by scalable systems.
           </p>
           <div>
             <a
@@ -160,8 +216,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS SECTION (Glowing skill cards) */}
-      <section id="skills" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/80">
+      {/* SKILLS SECTION - HONEYCOMB / DIAMOND LAYOUT */}
+      <section id="skills" className="py-16 px-6 max-w-5xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
             My <span className="text-cyan-400">Skills</span>
@@ -169,21 +225,23 @@ export default function Home() {
           <div className="w-16 h-1 bg-cyan-400 mx-auto mt-2 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {[
-            'Java', 'Spring Boot', 'Python', 'React', 'Next.js', 'Tailwind CSS',
-            'PostgreSQL', 'MongoDB', 'Docker', 'Git', 'GenAI / RAG', 'PyTorch'
-          ].map((skill, index) => (
+        <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+          {skillsList.map((skill, index) => (
             <div
               key={index}
-              className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300 flex flex-col items-center justify-center gap-2 group cursor-default"
+              className="w-28 h-28 bg-slate-900/90 border border-slate-800 rounded-2xl flex flex-col items-center justify-center p-3 transform rotate-45 hover:rotate-0 hover:scale-110 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 group cursor-pointer m-2"
             >
-              <span className="text-cyan-400 font-bold group-hover:scale-125 transition-transform duration-300">
-                ◆
-              </span>
-              <span className="text-sm font-semibold text-slate-200 group-hover:text-white">
-                {skill}
-              </span>
+              <div className="transform -rotate-45 group-hover:rotate-0 transition-transform duration-300 flex flex-col items-center justify-center gap-1">
+                <span 
+                  className="text-2xl font-black" 
+                  style={{ color: skill.color }}
+                >
+                  ◆
+                </span>
+                <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 text-center">
+                  {skill.name}
+                </span>
+              </div>
             </div>
           ))}
         </div>
