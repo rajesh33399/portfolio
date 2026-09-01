@@ -37,40 +37,26 @@ function TypewriterEffect({ words, typingSpeed = 100, deletingSpeed = 50, pauseD
   );
 }
 
-// Brand color mapping for YOUR skills
-const skillColorMap = {
-  Java: '#007396',
-  'Spring Boot': '#6DB33F',
-  Python: '#3776AB',
-  React: '#61DAFB',
-  'Next.js': '#FFFFFF',
-  'Tailwind CSS': '#06B6D4',
-  PostgreSQL: '#4169E1',
-  MongoDB: '#47A248',
-  Docker: '#2496ED',
-  Git: '#F05032',
-  'GenAI / RAG': '#A855F7',
-  PyTorch: '#EE4C2C',
-  JavaScript: '#F7DF1E',
-  TypeScript: '#3178C6',
-  Kafka: '#231F20',
-  Redis: '#DC382D',
-  FastAPI: '#009688',
-  OpenAI: '#10A37F',
-  LangChain: '#121212',
-  C: '#A8B9CC',
-};
+// YOUR EXACT SKILLS WITH COLOR ACCENTS AND LOGO URLS
+const mySkills = [
+  { name: 'Java 17', color: '#007396', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  { name: 'Spring Boot', color: '#6DB33F', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+  { name: 'Python', color: '#3776AB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'JavaScript', color: '#F7DF1E', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { name: 'HTML/CSS', color: '#E34F26', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'MongoDB', color: '#47A248', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'MySQL', color: '#00758F', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { name: 'OpenCV', color: '#5C3EE8', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
+  { name: 'C', color: '#A8B9CC', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
+  { name: 'Docker', color: '#2496ED', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+  { name: 'Redis', color: '#DC382D', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+  { name: 'Kafka', color: '#00D2FF', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg' },
+  { name: 'LangChain', color: '#A855F7', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'GenAI / RAG', color: '#EC4899', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+  { name: 'Git/GitHub', color: '#F05032', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+];
 
 export default function Home() {
-  // Pull your skills directly from site.js
-  const mySkillsList = site.skills
-    ? site.skills.flatMap((group) => group.items)
-    : [
-        'Java', 'Spring Boot', 'Python', 'React', 'Next.js', 'Tailwind CSS',
-        'PostgreSQL', 'MongoDB', 'Docker', 'Git', 'GenAI / RAG', 'PyTorch',
-        'Kafka', 'Redis', 'FastAPI'
-      ];
-
   return (
     <main className="min-h-screen bg-[#070a13] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
       
@@ -101,7 +87,6 @@ export default function Home() {
             Rajesh Botla
           </h1>
 
-          {/* TYPEWRITER ROLE */}
           <div className="text-xl md:text-3xl font-semibold text-slate-200 h-10 flex items-center gap-2">
             <span>And I&apos;m a</span>
             <TypewriterEffect 
@@ -134,7 +119,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* PROFILE IMAGE */}
         <div className="relative flex justify-center items-center">
           <div className="absolute w-64 h-64 md:w-80 md:h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
           <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.4)] overflow-hidden flex items-center justify-center">
@@ -158,16 +142,8 @@ export default function Home() {
         <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-10 text-center space-y-6 text-slate-300 leading-relaxed max-w-3xl mx-auto shadow-lg">
           <h3 className="text-2xl font-bold text-white">Passionate Software Engineer</h3>
           <p className="text-slate-400 text-base leading-relaxed">
-            I am a quick-minded computer science enthusiast. I am deeply interested in web development and full-stack software architecture, building beautiful, responsive user interfaces backed by scalable systems.
+            I am a dedicated software engineer focused on building robust backend microservices, high-performance web applications, and intelligent GenAI integrations.
           </p>
-          <div>
-            <a
-              href="#projects"
-              className="inline-block px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)]"
-            >
-              View My Work
-            </a>
-          </div>
         </div>
       </section>
 
@@ -184,53 +160,33 @@ export default function Home() {
           {site.projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-slate-900/80 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-[0_0_25px_rgba(6,182,212,0.15)] flex flex-col justify-between"
+              className="group bg-slate-900/80 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-cyan-500/50 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                    {project.name}
-                  </h3>
-                  {project.status && (
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
-                      ● {project.status}
-                    </span>
-                  )}
-                </div>
+                <h3 className="text-xl font-bold text-white group-hover:text-cyan-400 mb-2">
+                  {project.name}
+                </h3>
                 <p className="text-slate-300 font-medium text-sm mb-4">{project.tagline}</p>
-                <ul className="space-y-2 mb-6 text-slate-400 text-xs md:text-sm leading-relaxed list-disc list-inside">
+                <ul className="space-y-2 mb-6 text-slate-400 text-sm list-disc list-inside">
                   {project.bullets.map((bullet, idx) => (
                     <li key={idx}>{bullet}</li>
                   ))}
                 </ul>
               </div>
-
-              <div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.stack.map((tech, techIdx) => (
-                    <span
-                      key={techIdx}
-                      className="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700/60 font-mono"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center w-full py-2.5 rounded-lg border border-cyan-500/40 text-cyan-400 font-semibold text-sm hover:bg-cyan-500 hover:text-slate-950 transition-all duration-200"
-                >
-                  {project.repoLabel || 'View Project'} →
-                </a>
-              </div>
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="py-2.5 rounded-lg border border-cyan-500/40 text-cyan-400 text-center font-semibold text-sm hover:bg-cyan-500 hover:text-slate-950 transition-all"
+              >
+                View Repository →
+              </a>
             </div>
           ))}
         </div>
       </section>
 
-      {/* SKILLS SECTION - EXACT UDAYA DIAMOND GRID FOR YOUR SKILLS */}
+      {/* SKILLS SECTION - HONEYCOMB HEXAGON LAYOUT WITH BRAND ICONS */}
       <section id="skills" className="py-20 px-6 max-w-5xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
@@ -239,21 +195,23 @@ export default function Home() {
           <div className="w-16 h-1 bg-cyan-400 mx-auto mt-2 rounded-full" />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-3xl mx-auto items-center">
-          {mySkillsList.map((skillName, index) => (
+        {/* HONEYCOMB FLEX GRID */}
+        <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 max-w-3xl mx-auto">
+          {mySkills.map((skill, index) => (
             <div
               key={index}
-              className="diamond-card w-24 h-24 sm:w-28 sm:h-28 bg-[#12171f] border border-slate-700/80 flex flex-col items-center justify-center p-2 cursor-pointer relative group"
+              className="hexagon-card w-28 h-32 md:w-32 md:h-36 bg-[#0e131f] border border-slate-700/60 flex flex-col items-center justify-center p-3 cursor-pointer relative group"
+              style={{ '--glow-color': skill.color }}
             >
-              <div className="flex flex-col items-center justify-center gap-1 z-10">
-                <span 
-                  className="text-lg sm:text-xl font-bold transition-transform duration-300 group-hover:scale-125"
-                  style={{ color: skillColorMap[skillName] || '#06B6D4' }}
-                >
-                  ◆
-                </span>
-                <span className="text-[11px] sm:text-xs font-semibold text-slate-200 group-hover:text-cyan-300 text-center tracking-tight px-1">
-                  {skillName}
+              {/* INNER HEXAGON CONTENT */}
+              <div className="flex flex-col items-center justify-center gap-2 z-10">
+                <img 
+                  src={skill.icon} 
+                  alt={skill.name} 
+                  className="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110"
+                />
+                <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 text-center tracking-tight">
+                  {skill.name}
                 </span>
               </div>
             </div>
