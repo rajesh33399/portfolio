@@ -44,6 +44,7 @@ const mySkills = [
   { name: 'Python', color: '#3776AB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
   { name: 'JavaScript', color: '#F7DF1E', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
   { name: 'HTML/CSS', color: '#E34F26', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'PostgreSQL', color: '#4169E1', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
   { name: 'MongoDB', color: '#47A248', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
   { name: 'MySQL', color: '#00758F', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
   { name: 'OpenCV', color: '#5C3EE8', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
@@ -79,7 +80,8 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 max-w-6xl mx-auto">
         <div className="flex-1 space-y-6 text-left">
-          <h3 className="text-cyan-400 text-sm md:text-base font-mono tracking-widest uppercase">
+          {/* MATCHED FONT FOR HELLO IT'S ME */}
+          <h3 className="text-cyan-400 text-sm md:text-base font-semibold tracking-widest uppercase">
             Hello, It&apos;s Me
           </h3>
           
@@ -97,8 +99,9 @@ export default function Home() {
             />
           </div>
 
+          {/* UPDATED SUBTITLE LINE */}
           <p className="text-slate-400 text-base leading-relaxed max-w-xl">
-            I build scalable full-stack applications and intelligent AI platforms.
+            Building intelligent full-stack applications and designing intuitive user interfaces.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
@@ -119,9 +122,10 @@ export default function Home() {
           </div>
         </div>
 
+        {/* LARGER PROFILE IMAGE CONTAINER */}
         <div className="relative flex justify-center items-center">
-          <div className="absolute w-64 h-64 md:w-80 md:h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
-          <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.4)] overflow-hidden flex items-center justify-center">
+          <div className="absolute w-80 h-80 md:w-[26rem] md:h-[26rem] bg-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_35px_rgba(6,182,212,0.4)] overflow-hidden flex items-center justify-center">
             <img
               src="/profile.jpg"
               alt="Rajesh Botla"
@@ -141,8 +145,11 @@ export default function Home() {
         </div>
         <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-10 text-center space-y-6 text-slate-300 leading-relaxed max-w-3xl mx-auto shadow-lg">
           <h3 className="text-2xl font-bold text-white">Passionate Software Engineer</h3>
+          <p className="text-slate-300 text-base leading-relaxed">
+            I am a dedicated Full Stack Software Engineer focused on building robust backend microservices, high-performance web applications, and intelligent GenAI integrations. I strive to build clean, intuitive user experiences backed by scalable systems architecture.
+          </p>
           <p className="text-slate-400 text-base leading-relaxed">
-            I am a dedicated software engineer focused on building robust backend microservices, high-performance web applications, and intelligent GenAI integrations.
+            By combining modern frontend designs with resilient systems, I bridge the gap between core software development and advanced AI pipelines to deliver complete, production-ready solutions as a GenAI Developer.
           </p>
         </div>
       </section>
@@ -203,7 +210,6 @@ export default function Home() {
               className="hexagon-card w-28 h-32 md:w-32 md:h-36 bg-[#0e131f] border border-slate-700/60 flex flex-col items-center justify-center p-3 cursor-pointer relative group"
               style={{ '--glow-color': skill.color }}
             >
-              {/* INNER HEXAGON CONTENT */}
               <div className="flex flex-col items-center justify-center gap-2 z-10">
                 <img 
                   src={skill.icon} 
