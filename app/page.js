@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { site } from '@/config/site';
 
-// Self-contained Typewriter Hook (Types, Pauses, Backspaces)
+// Backspacing Typewriter Component
 function TypewriterEffect({ words, typingSpeed = 100, deletingSpeed = 50, pauseDuration = 1500 }) {
   const [text, setText] = useState('');
   const [wordIndex, setWordIndex] = useState(0);
@@ -37,25 +37,39 @@ function TypewriterEffect({ words, typingSpeed = 100, deletingSpeed = 50, pauseD
   );
 }
 
+// Brand color mapping for YOUR skills
+const skillColorMap = {
+  Java: '#007396',
+  'Spring Boot': '#6DB33F',
+  Python: '#3776AB',
+  React: '#61DAFB',
+  'Next.js': '#FFFFFF',
+  'Tailwind CSS': '#06B6D4',
+  PostgreSQL: '#4169E1',
+  MongoDB: '#47A248',
+  Docker: '#2496ED',
+  Git: '#F05032',
+  'GenAI / RAG': '#A855F7',
+  PyTorch: '#EE4C2C',
+  JavaScript: '#F7DF1E',
+  TypeScript: '#3178C6',
+  Kafka: '#231F20',
+  Redis: '#DC382D',
+  FastAPI: '#009688',
+  OpenAI: '#10A37F',
+  LangChain: '#121212',
+  C: '#A8B9CC',
+};
+
 export default function Home() {
-  const skillsList = [
-    { name: 'HTML', color: '#E34F26' },
-    { name: 'CSS', color: '#1572B6' },
-    { name: 'JavaScript', color: '#F7DF1E' },
-    { name: 'C', color: '#A8B9CC' },
-    { name: 'Kotlin', color: '#7F52FF' },
-    { name: 'Power BI', color: '#F2C811' },
-    { name: 'PostgreSQL', color: '#4169E1' },
-    { name: 'MongoDB', color: '#47A248' },
-    { name: 'Python', color: '#3776AB' },
-    { name: 'Git', color: '#F05032' },
-    { name: 'Blockchain', color: '#121D33' },
-    { name: 'TensorFlow', color: '#FF6F00' },
-    { name: 'PyTorch', color: '#EE4C2C' },
-    { name: 'Keras', color: '#D00000' },
-    { name: 'Scikit-learn', color: '#F7931E' },
-    { name: 'OpenCV', color: '#5C3EE8' },
-  ];
+  // Pull your skills directly from site.js
+  const mySkillsList = site.skills
+    ? site.skills.flatMap((group) => group.items)
+    : [
+        'Java', 'Spring Boot', 'Python', 'React', 'Next.js', 'Tailwind CSS',
+        'PostgreSQL', 'MongoDB', 'Docker', 'Git', 'GenAI / RAG', 'PyTorch',
+        'Kafka', 'Redis', 'FastAPI'
+      ];
 
   return (
     <main className="min-h-screen bg-[#070a13] text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
@@ -87,7 +101,7 @@ export default function Home() {
             Rajesh Botla
           </h1>
 
-          {/* DYNAMIC BACKSPACING TYPEWRITER ROLE */}
+          {/* TYPEWRITER ROLE */}
           <div className="text-xl md:text-3xl font-semibold text-slate-200 h-10 flex items-center gap-2">
             <span>And I&apos;m a</span>
             <TypewriterEffect 
@@ -216,30 +230,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS SECTION - HONEYCOMB / DIAMOND LAYOUT */}
-      <section id="skills" className="py-16 px-6 max-w-5xl mx-auto border-t border-slate-800/80">
-        <div className="text-center mb-12">
+      {/* SKILLS SECTION - EXACT UDAYA DIAMOND GRID FOR YOUR SKILLS */}
+      <section id="skills" className="py-20 px-6 max-w-5xl mx-auto border-t border-slate-800/80">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
             My <span className="text-cyan-400">Skills</span>
           </h2>
           <div className="w-16 h-1 bg-cyan-400 mx-auto mt-2 rounded-full" />
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-          {skillsList.map((skill, index) => (
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-3xl mx-auto items-center">
+          {mySkillsList.map((skillName, index) => (
             <div
               key={index}
-              className="w-28 h-28 bg-slate-900/90 border border-slate-800 rounded-2xl flex flex-col items-center justify-center p-3 transform rotate-45 hover:rotate-0 hover:scale-110 hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 group cursor-pointer m-2"
+              className="diamond-card w-24 h-24 sm:w-28 sm:h-28 bg-[#12171f] border border-slate-700/80 flex flex-col items-center justify-center p-2 cursor-pointer relative group"
             >
-              <div className="transform -rotate-45 group-hover:rotate-0 transition-transform duration-300 flex flex-col items-center justify-center gap-1">
+              <div className="flex flex-col items-center justify-center gap-1 z-10">
                 <span 
-                  className="text-2xl font-black" 
-                  style={{ color: skill.color }}
+                  className="text-lg sm:text-xl font-bold transition-transform duration-300 group-hover:scale-125"
+                  style={{ color: skillColorMap[skillName] || '#06B6D4' }}
                 >
                   ◆
                 </span>
-                <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 text-center">
-                  {skill.name}
+                <span className="text-[11px] sm:text-xs font-semibold text-slate-200 group-hover:text-cyan-300 text-center tracking-tight px-1">
+                  {skillName}
                 </span>
               </div>
             </div>
