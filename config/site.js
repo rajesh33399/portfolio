@@ -140,7 +140,7 @@ export const site = {
     blurb:
       "I'm looking for full-stack and software engineering roles where I can work on distributed systems or applied AI applications. Feel free to reach out via email or LinkedIn!",
     email: 'rajeshbotla4@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/rajeshbotla-948540377',
+    linkedin: "https://www.linkedin.com/in/rajesh-botla-948540377/",
     github: 'https://github.com/rajesh33399',
     resume: '/resume.pdf',
   },
