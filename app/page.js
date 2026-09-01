@@ -23,19 +23,26 @@ export default function Home() {
         </div>
       </header>
 
-      {/* HERO SECTION */}
+      {/* HERO SECTION WITH TYPEWRITER */}
       <section className="min-h-[85vh] flex flex-col-reverse md:flex-row items-center justify-between gap-10 py-16 px-6 max-w-6xl mx-auto">
         <div className="flex-1 space-y-6 text-left">
           <h3 className="text-cyan-400 text-sm md:text-base font-mono tracking-widest uppercase">
-            Hello, I&apos;m Rajesh Botla
+            Hello, It&apos;s Me
           </h3>
           
-          <h1 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tight leading-tight">
-            Software Engineer <br />
-            <span className="text-cyan-400">&</span> GenAI Developer
+          <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
+            Rajesh Botla
           </h1>
 
-          <p className="text-slate-300 text-lg font-medium leading-relaxed max-w-xl">
+          {/* DYNAMIC TYPEWRITER TEXT FROM CSS */}
+          <div className="text-xl md:text-2xl font-semibold text-slate-200">
+            <span>And I&apos;m a </span>
+            <span className="typewriter-text text-cyan-400 font-bold">
+              Software Engineer & GenAI Developer
+            </span>
+          </div>
+
+          <p className="text-slate-400 text-base leading-relaxed max-w-xl">
             I build scalable full-stack applications and intelligent AI platforms.
           </p>
 
@@ -46,18 +53,18 @@ export default function Home() {
               rel="noreferrer"
               className="px-6 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]"
             >
-              View Resume ↗
+              Resume
             </a>
             <a
-              href="#contact"
+              href="#projects"
               className="px-6 py-3 rounded-full border border-cyan-500/50 hover:border-cyan-400 text-cyan-400 font-semibold transition-all hover:bg-cyan-500/10"
             >
-              Get In Touch
+              View My Work
             </a>
           </div>
         </div>
 
-        {/* PROFILE IMAGE */}
+        {/* PROFILE IMAGE WITH GLOW */}
         <div className="relative flex justify-center items-center">
           <div className="absolute w-64 h-64 md:w-80 md:h-80 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
           <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full p-1 bg-gradient-to-b from-cyan-400 to-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.4)] overflow-hidden flex items-center justify-center">
@@ -70,7 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT SECTION */}
+      {/* ABOUT SECTION (Clean focus without college/location) */}
       <section id="about" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
@@ -78,10 +85,19 @@ export default function Home() {
           </h2>
           <div className="w-16 h-1 bg-cyan-400 mx-auto mt-2 rounded-full" />
         </div>
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 space-y-4 text-slate-300 leading-relaxed max-w-4xl mx-auto shadow-lg">
-          {site.about.map((p, idx) => (
-            <p key={idx}>{p}</p>
-          ))}
+        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-10 text-center space-y-6 text-slate-300 leading-relaxed max-w-3xl mx-auto shadow-lg">
+          <h3 className="text-2xl font-bold text-white">Passionate Software Engineer</h3>
+          <p className="text-slate-400 text-base leading-relaxed">
+            I am a dedicated software engineer focused on building robust backend microservices, high-performance web applications, and intelligent GenAI integrations. I strive to build clean, intuitive user experiences backed by scalable systems architecture.
+          </p>
+          <div>
+            <a
+              href="#projects"
+              className="inline-block px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+            >
+              View My Work
+            </a>
+          </div>
         </div>
       </section>
 
@@ -136,7 +152,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="inline-flex items-center justify-center w-full py-2.5 rounded-lg border border-cyan-500/40 text-cyan-400 font-semibold text-sm hover:bg-cyan-500 hover:text-slate-950 transition-all duration-200"
                 >
-                  {project.repoLabel || 'View Repository'} →
+                  {project.repoLabel || 'View Project'} →
                 </a>
               </div>
             </div>
@@ -144,7 +160,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS SECTION */}
+      {/* SKILLS SECTION (Glowing skill cards) */}
       <section id="skills" className="py-16 px-6 max-w-6xl mx-auto border-t border-slate-800/80">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
@@ -153,25 +169,21 @@ export default function Home() {
           <div className="w-16 h-1 bg-cyan-400 mx-auto mt-2 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {site.skills.map((skillGroup, index) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          {[
+            'Java', 'Spring Boot', 'Python', 'React', 'Next.js', 'Tailwind CSS',
+            'PostgreSQL', 'MongoDB', 'Docker', 'Git', 'GenAI / RAG', 'PyTorch'
+          ].map((skill, index) => (
             <div
               key={index}
-              className="bg-slate-900/60 border border-slate-800 rounded-xl p-5 hover:border-cyan-500/30 transition-all"
+              className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center hover:border-cyan-400 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300 flex flex-col items-center justify-center gap-2 group cursor-default"
             >
-              <h3 className="text-cyan-400 font-bold text-base mb-4 border-b border-slate-800 pb-2">
-                {skillGroup.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skillGroup.items.map((item, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-200 border border-slate-700/50"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
+              <span className="text-cyan-400 font-bold group-hover:scale-125 transition-transform duration-300">
+                ◆
+              </span>
+              <span className="text-sm font-semibold text-slate-200 group-hover:text-white">
+                {skill}
+              </span>
             </div>
           ))}
         </div>
