@@ -94,7 +94,7 @@ export default function Home() {
             <TypewriterEffect 
               words={[
                 'Full Stack Software Engineer',
-                'GenAI Developer'
+                'GenAI Engineer'
               ]} 
             />
           </div>
