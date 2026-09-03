@@ -38,7 +38,7 @@ function TypewriterEffect({ words, typingSpeed = 100, deletingSpeed = 50, pauseD
   );
 }
 
-// YOUR EXACT SKILLS WITH COLOR ACCENTS AND LOGO URLS (LANGCHAIN UPDATED TO BRIGHT SVG)
+// YOUR EXACT SKILLS WITH COLOR ACCENTS AND LOGO URLS
 const mySkills = [
   // Languages
   { name: 'Java 17', color: '#007396', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
@@ -224,44 +224,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS SECTION - HONEYCOMB HEXAGON LAYOUT WITH BRAND ICONS */}
-<section id="skills" className="py-20 px-6 max-w-5xl mx-auto border-t border-slate-800/80">
-  <div className="text-center mb-16">
-    <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
-      My <span className="text-cyan-400">Skills</span>
-    </h2>
-    <div className="w-16 h-1 bg-cyan-400 mx-auto mt-2 rounded-full" />
-  </div>
-
-  {/* HONEYCOMB FLEX GRID */}
-  <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 max-w-3xl mx-auto">
-    {mySkills.map((skill, index) => (
-      <div
-        key={index}
-        className="hexagon-card w-28 h-32 md:w-32 md:h-36 bg-[#0e131f] border border-slate-700/60 flex flex-col items-center justify-center p-3 cursor-pointer relative group"
-        style={{ '--glow-color': skill.color }}
-      >
-        <div className="flex flex-col items-center justify-center gap-2 z-10">
-          <img 
-            src={skill.icon} 
-            alt={skill.name} 
-            className="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110"
-            style={{
-              /* Bypasses invert rules for LangChain to protect the colorful green/red parrot logo artwork */
-              filter: skill.name === 'LangChain' 
-                ? `drop-shadow(0px 0px 4px ${skill.color})` 
-                : (skill.invert ? 'brightness-0 invert' : 'none')
-            }}
-          />
-          <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 text-center tracking-tight">
-            {skill.name}
-          </span>
+      {/* SKILLS SECTION */}
+      <section id="skills" className="py-20 px-6 max-w-5xl mx-auto border-t border-slate-800/80">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white uppercase tracking-tight">
+            My <span className="text-cyan-400">Skills</span>
+          </h2>
+          <div className="w-16 h-1 bg-cyan-400 mx-auto mt-2 rounded-full" />
         </div>
-      </div>
-    ))}
-  </div>
-</section>
 
+        {/* HONEYCOMB FLEX GRID */}
+        <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 max-w-3xl mx-auto">
+          {mySkills.map((skill, index) => (
+            <div
+              key={index}
+              className="hexagon-card w-28 h-32 md:w-32 md:h-36 bg-[#0e131f] border border-slate-700/60 flex flex-col items-center justify-center p-3 cursor-pointer relative group"
+              style={{ '--glow-color': skill.color }}
+            >
+              <div className="flex flex-col items-center justify-center gap-2 z-10">
+                <img 
+                  src={skill.icon} 
+                  alt={skill.name} 
+                  className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-300 group-hover:scale-110"
+                />
+                <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 text-center tracking-tight">
+                  {skill.name}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* CONTACT SECTION */}
       <section id="contact" className="py-16 px-6 max-w-4xl mx-auto border-t border-slate-800/80 text-center">
