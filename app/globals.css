@@ -1,3 +1,5 @@
+@import url('https://jsdelivr.net');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -41,5 +43,5 @@ body {
 
 .hexagon-card:hover {
   transform: translateY(-5px) scale(1.05);
-  filter: drop-shadow(0px 0px 15px var(--glow-color, #06b6d4));
+  box-shadow: 0px 0px 15px var(--accent); /* Uses your existing CSS accent variable for the glow */
 }
