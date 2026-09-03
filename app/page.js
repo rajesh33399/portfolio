@@ -38,7 +38,7 @@ function TypewriterEffect({ words, typingSpeed = 100, deletingSpeed = 50, pauseD
   );
 }
 
-// YOUR EXACT SKILLS WITH COLOR ACCENTS AND LOGO URLS
+// YOUR EXACT SKILLS WITH COLOR ACCENTS AND LOGO URLS / SVGS
 const mySkills = [
   // Languages
   { name: 'Java 17', color: '#007396', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
@@ -61,7 +61,31 @@ const mySkills = [
   { name: 'Docker', color: '#2496ED', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
 
   // AI / ML
-  { name: 'LangChain', color: '#1C3C3A', icon: 'https://api.iconify.design/logos:langchain-icon.svg' },
+  { 
+    name: 'LangChain', 
+    color: '#1C3C3A', 
+    customIcon: (
+      <svg viewBox="0 0 100 100" className="w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110">
+        {/* PARROT BODY */}
+        <path d="M 20 28 C 18 18, 30 10, 38 18 C 48 26, 52 45, 50 62 C 45 78, 35 85, 26 80 C 22 72, 28 58, 20 28 Z" fill="#71D127" />
+        <path d="M 28 15 C 34 11, 40 18, 36 28 C 28 26, 24 20, 28 15 Z" fill="#F3D023" />
+        <path d="M 22 25 C 16 26, 12 32, 10 38 C 16 38, 20 34, 22 25 Z" fill="#E84538" />
+        <path d="M 16 29 C 12 30, 9 34, 8 38 C 12 38, 15 35, 16 29 Z" fill="#222222" />
+        <circle cx="28" cy="22" r="2.5" fill="#111111" />
+        <path d="M 38 52 C 42 60, 44 72, 48 82 C 42 80, 36 72, 38 52 Z" fill="#DC372A" />
+        
+        {/* CHAIN LINKS */}
+        <g stroke="#9BB2C9" strokeWidth="6" fill="none" strokeLinecap="round">
+          <ellipse cx="64" cy="46" rx="18" ry="9" transform="rotate(-40 64 46)" />
+          <ellipse cx="78" cy="60" rx="18" ry="9" transform="rotate(-40 78 60)" />
+        </g>
+        <g stroke="#E1E9F0" strokeWidth="3" fill="none" strokeLinecap="round">
+          <ellipse cx="64" cy="46" rx="18" ry="9" transform="rotate(-40 64 46)" />
+          <ellipse cx="78" cy="60" rx="18" ry="9" transform="rotate(-40 78 60)" />
+        </g>
+      </svg>
+    )
+  },
   { name: 'GenAI / RAG', color: '#EC4899', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
   { name: 'FAISS Search', color: '#008080', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
   { name: 'OpenCV', color: '#5C3EE8', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
@@ -242,11 +266,15 @@ export default function Home() {
               style={{ '--glow-color': skill.color }}
             >
               <div className="flex flex-col items-center justify-center gap-2 z-10">
-                <img 
-                  src={skill.icon} 
-                  alt={skill.name} 
-                  className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-300 group-hover:scale-110"
-                />
+                {skill.customIcon ? (
+                  skill.customIcon
+                ) : (
+                  <img 
+                    src={skill.icon} 
+                    alt={skill.name} 
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                )}
                 <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 text-center tracking-tight">
                   {skill.name}
                 </span>
