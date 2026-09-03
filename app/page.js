@@ -38,7 +38,7 @@ function TypewriterEffect({ words, typingSpeed = 100, deletingSpeed = 50, pauseD
   );
 }
 
-// YOUR EXACT SKILLS WITH COLOR ACCENTS AND LOGO URLS (POSTGRESQL REMOVED & MISSING SKILLS ADDED)
+// YOUR EXACT SKILLS WITH COLOR ACCENTS AND LOGO URLS (LANGCHAIN UPDATED TO BRIGHT SVG)
 const mySkills = [
   // Languages
   { name: 'Java 17', color: '#007396', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
@@ -61,7 +61,7 @@ const mySkills = [
   { name: 'Docker', color: '#2496ED', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
 
   // AI / ML
-  { name: 'LangChain', color: '#1C3C3A', icon: 'https://cdn.worldvectorlogo.com/logos/langchain-1.svg' },
+  { name: 'LangChain', color: '#38BDF8', icon: 'https://cdn.worldvectorlogo.com/logos/langchain-1.svg', invert: true },
   { name: 'GenAI / RAG', color: '#EC4899', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
   { name: 'FAISS Search', color: '#008080', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
   { name: 'OpenCV', color: '#5C3EE8', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
@@ -118,7 +118,7 @@ export default function Home() {
             Building intelligent full-stack applications and designing intuitive user interfaces.
           </p>
 
-          {/* SOCIAL ICONS (LINKEDIN & GITHUB ONLY) */}
+          {/* SOCIAL ICONS */}
           <div className="flex items-center gap-4 pt-2">
             <a
               href={site.contact.linkedin}
@@ -140,7 +140,7 @@ export default function Home() {
             </a>
           </div>
 
-          {/* ACTION BUTTON - ONLY RESUME */}
+          {/* ACTION BUTTON */}
           <div className="flex flex-wrap gap-4 pt-2">
             <a
               href="/resume.pdf"
@@ -245,7 +245,9 @@ export default function Home() {
                 <img 
                   src={skill.icon} 
                   alt={skill.name} 
-                  className="w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110"
+                  className={`w-8 h-8 md:w-10 md:h-10 object-contain transition-transform duration-300 group-hover:scale-110 ${
+                    skill.invert ? 'brightness-0 invert' : ''
+                  }`}
                 />
                 <span className="text-xs font-bold text-slate-200 group-hover:text-cyan-300 text-center tracking-tight">
                   {skill.name}
