@@ -61,7 +61,7 @@ const mySkills = [
   { name: 'Docker', color: '#2496ED', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
 
   // AI / ML
-  { name: 'LangChain', color: '#1C3C3A', icon: 'https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/langchain_stack.png' },
+  { name: 'LangChain', color: '#1C3C3A', icon: 'https://cdn.worldvectorlogo.com/logos/langchain-1.svg' },
   { name: 'GenAI / RAG', color: '#EC4899', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
   { name: 'FAISS Search', color: '#008080', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
   { name: 'OpenCV', color: '#5C3EE8', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg' },
