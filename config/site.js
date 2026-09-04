@@ -41,11 +41,12 @@ export const site = {
       tagline:
         'A Netflix-inspired full-stack streaming platform with Java microservices and an HLS.js web client.',
       bullets: [
-        'Built an interactive web frontend using HTML, CSS, Vanilla JavaScript, and HLS.js for dynamic catalog browsing, search, content management, and adaptive video streaming.',
+        'Built an interactive web frontend using HTML, CSS, Vanilla JavaScript for dynamic catalog browsing, search, content management.',
+        'Integrated the Hls.js library into the client to drive adaptive-bitrate playback in-browser, switching quality levels in real time as network conditions change.',
         'Architected four Spring Boot microservices (Content, Video, Encoding, Streaming) communicating asynchronously via Kafka event streams for video uploads, transcoding, and delivery.',
         'Automated adaptive-bitrate transcoding with FFmpeg, generating multi-resolution HLS playlists (1080p, 720p, 480p, 360p) for seamless playback.',
-        'Optimized query latency by caching frequently accessed movie metadata in Redis, cutting repeat database reads by over 50%.',
-        'Containerized the complete application stack including microservices, MySQL, Redis, Apache Kafka, and Zookeeper using Docker Compose.',
+        'Cached frequently accessed movie metadata in Redis, cutting repeat database reads by over 50%.',
+        'Containerized the full stack — microservices, MySQL, Redis, Apache Kafka, and Zookeeper — with Docker Compose for one-command local setup.',
       ],
       stack: [
         'Java 17',
@@ -70,12 +71,11 @@ export const site = {
       tagline:
         'An end-to-end multimodal AI application for general AI conversations and document-based question answering.',
       bullets: [
-        'Designed and built the entire web client from scratch — HTML5, custom CSS3 styled after a Netflix-inspired dark theme, and Vanilla JavaScript with no frontend framework — covering catalog browsing, search, and content management.',
-        'Integrated the Hls.js library into the client to drive adaptive-bitrate playback in-browser, switching quality levels in real time as network conditions change.',
-        'Architected four Spring Boot microservices (Content, Video, Encoding, Streaming) communicating asynchronously via Kafka event streams for video uploads, transcoding, and delivery.',
-        'Automated adaptive-bitrate transcoding with FFmpeg, generating multi-resolution HLS playlists (1080p, 720p, 480p, 360p) for seamless playback.',
-        'Cached frequently accessed movie metadata in Redis, cutting repeat database reads by over 50%.',
-        'Containerized the full stack — microservices, MySQL, Redis, Apache Kafka, and Zookeeper — with Docker Compose for one-command local setup.',
+        'Built a dual-mode AI assistant: an open-ended multi-turn conversational mode for general queries, and a document-grounded RAG mode for question-answering over uploaded files.',
+        'Engineered the RAG pipeline — document processing, OCR text extraction, text chunking, and FAISS vector embeddings — powering semantic search across both modes.',
+        'Integrated Gemini and Groq APIs for fast generation, with custom prompt engineering and session management shared across conversation and document-QA modes.',
+        'Optimized document loading with incremental hashing, skipping re-embedding of unchanged files.',
+        'Containerized the application with Docker and configured secure, environment-based API key management.',
       ],
       stack: [
         'Python',
