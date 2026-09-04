@@ -70,11 +70,12 @@ export const site = {
       tagline:
         'An end-to-end multimodal AI application for general AI conversations and document-based question answering.',
       bullets: [
-        'Developed an interactive multimodal AI interface using Python, Streamlit, and LangChain supporting general multi-turn AI conversations.',
-        'Engineered a document QA engine featuring document processing, OCR text extraction, text chunking, and FAISS vector embeddings for semantic search.',
-        'Implemented Retrieval-Augmented Generation (RAG) pipelines, custom prompt engineering, session management, and API integrations with Gemini and Groq LLMs.',
-        'Optimized document loading using incremental hashing to bypass re-embedding unchanged files.',
-        'Containerized the application with Docker and configured secure, environment-based API key management.',
+        'Designed and built the entire web client from scratch — HTML5, custom CSS3 styled after a Netflix-inspired dark theme, and Vanilla JavaScript with no frontend framework — covering catalog browsing, search, and content management.',
+        'Integrated the Hls.js library into the client to drive adaptive-bitrate playback in-browser, switching quality levels in real time as network conditions change.',
+        'Architected four Spring Boot microservices (Content, Video, Encoding, Streaming) communicating asynchronously via Kafka event streams for video uploads, transcoding, and delivery.',
+        'Automated adaptive-bitrate transcoding with FFmpeg, generating multi-resolution HLS playlists (1080p, 720p, 480p, 360p) for seamless playback.',
+        'Cached frequently accessed movie metadata in Redis, cutting repeat database reads by over 50%.',
+        'Containerized the full stack — microservices, MySQL, Redis, Apache Kafka, and Zookeeper — with Docker Compose for one-command local setup.',
       ],
       stack: [
         'Python',
